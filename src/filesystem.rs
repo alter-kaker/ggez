@@ -391,6 +391,19 @@ impl Filesystem {
         &self.resources_dir
     }
 
+    /// Returns a slice of filesystem paths that will be searched for
+    /// resources.
+    pub fn resources_paths(&self) -> Vec<path::PathBuf> {
+        self
+            .vfs
+            .lock()
+            .expect("cannot access vfs due to lock fail")
+            .roots()
+            .iter()
+            .filter_map(|fs| fs.to_path_buf())
+            .collect::<Vec<_>>()
+    }
+
     /// Get a reference to the filesystem's zip dir.
     pub fn zip_dir(&self) -> &path::Path {
         &self.zip_dir

@@ -6,6 +6,8 @@ None, just minor but breaking changes.
 
 ## Changed
 
+`Image::new_blank_canvas_image` has been renamed to `Image::from_color`
+
 `InstanceArray::resize` takes a `usize` instead of a `u32`.
 
 `Canvas::set_shader`, `Canvas::set_shader_params`, and `Canvas::set_text_shader_params` now take a reference.
@@ -18,9 +20,13 @@ None, just minor but breaking changes.
 
 `ShaderBuilder::combined_code` and `ShaderBuilder::combined_path` have become associated functions called `ShaderBuilder::from_code` and `ShaderBuilder::from_path` respectively.
 
+Some `ContextBuilder` options now take paths instead of strings.
+
 ## Removed
 
 `ShaderParams` no longer implements Clone, PartialEq, Eq, or ToOwned.
+
+`Image::from_solid` has been removed use `Image::from_color`
 
 ## Fixed
 
